@@ -37,11 +37,11 @@ module.exports = grammar({
 
     comment: $ => /#.*/,
 
-    constant: $ => choice(
+    constant: $ => token(choice(
       'true',
       'false',
       'null'
-    ),
+    )),
 
     directive: $ => choice(
       'as'

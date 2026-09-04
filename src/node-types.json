@@ -1,10 +1,5 @@
 [
   {
-    "type": "constant",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "function_definition",
     "named": true,
     "fields": {},
@@ -146,6 +141,10 @@
     "named": true
   },
   {
+    "type": "constant",
+    "named": true
+  },
+  {
     "type": "elif",
     "named": false
   },
@@ -156,10 +155,6 @@
   {
     "type": "escape",
     "named": true
-  },
-  {
-    "type": "false",
-    "named": false
   },
   {
     "type": "float",
@@ -186,10 +181,6 @@
     "named": true
   },
   {
-    "type": "null",
-    "named": false
-  },
-  {
     "type": "number",
     "named": true
   },
@@ -204,10 +195,6 @@
   {
     "type": "string",
     "named": true
-  },
-  {
-    "type": "true",
-    "named": false
   },
   {
     "type": "uint",
