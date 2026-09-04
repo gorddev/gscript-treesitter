@@ -12,7 +12,7 @@ module.exports = grammar({
 
   rules: {
     // TODO: add the actual grammar rules
-    source_file: $ => "hello",
+    source_file: $ => repeat($._definition),
 
     _definition: $ => choice(
       $.comment,
@@ -32,7 +32,7 @@ module.exports = grammar({
     ),
 
     keyword: $ => choice(
-      'if', 'elif', 'else', 'for', 'while', 'use', 'return', 'fn'
+      'if', 'elif', 'else', 'for', 'while', 'return', 'fn'
     ),
 
     identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
