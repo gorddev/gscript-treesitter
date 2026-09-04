@@ -36,12 +36,12 @@ module.exports = grammar({
 
     comment: $ => /#.*/,
 
-    // FIX: Wrapped in token() to force a named node output in the syntax tree
-    constant: $ => token(choice(
+    // FIX: Match constants structurally as distinct keyword symbols
+    constant: $ => choice(
       'true',
       'false',
       'null'
-    )),
+    ),
 
     directive: $ => choice(
       'as'
@@ -65,14 +65,14 @@ module.exports = grammar({
 
     escape: $ => /\\["\\ntr]/,
 
-    // FIX: Wrapped in token() to force a named node output in the syntax tree
-    type: $ => token(choice(
+    // FIX: Match primitive types structurally as distinct keyword symbols
+    type: $ => choice(
       "bool",
       "int",
       "uint",
       "float",
       "str"
-    )),
+    ),
 
     function_definition: $ => prec(2, seq(
       'fn',

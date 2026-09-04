@@ -1,5 +1,10 @@
 [
   {
+    "type": "constant",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "function_definition",
     "named": true,
     "fields": {},
@@ -116,6 +121,11 @@
     }
   },
   {
+    "type": "type",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -128,11 +138,11 @@
     "named": false
   },
   {
-    "type": "comment",
-    "named": true
+    "type": "bool",
+    "named": false
   },
   {
-    "type": "constant",
+    "type": "comment",
     "named": true
   },
   {
@@ -148,6 +158,14 @@
     "named": true
   },
   {
+    "type": "false",
+    "named": false
+  },
+  {
+    "type": "float",
+    "named": false
+  },
+  {
     "type": "fn",
     "named": false
   },
@@ -160,8 +178,16 @@
     "named": false
   },
   {
+    "type": "int",
+    "named": false
+  },
+  {
     "type": "module_name",
     "named": true
+  },
+  {
+    "type": "null",
+    "named": false
   },
   {
     "type": "number",
@@ -172,12 +198,20 @@
     "named": false
   },
   {
+    "type": "str",
+    "named": false
+  },
+  {
     "type": "string",
     "named": true
   },
   {
-    "type": "type",
-    "named": true
+    "type": "true",
+    "named": false
+  },
+  {
+    "type": "uint",
+    "named": false
   },
   {
     "type": "use",
