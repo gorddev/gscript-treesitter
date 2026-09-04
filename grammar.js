@@ -10,6 +10,7 @@
 module.exports = grammar({
   name: "gscript",
 
+  // Tells Tree-sitter it's okay to figure out 'use' contextually
   conflicts: $ => [
     [$.keyword, $.import]
   ],
@@ -19,28 +20,19 @@ module.exports = grammar({
 
     _definition: $ => choice(
       $.comment,
+      $.import,
+      $.function_definition,
+      $._expression
+    ),
+
+    _expression: $ => choice(
       $.keyword,
       $.identifier,
       $.number,
       $.string,
-      $.import,
       $.escape,
       $.type,
-      $.constant,
-      $.function_definition
-    ),
-
-    // FIX: Added prec(2) to resolve conflict with the standalone 'fn' keyword
-    function_definition: $ => prec(2, seq(
-      'fn',
-      alias($.identifier, $.function_name),
-      $.parameter_list
-    )),
-
-    parameter_list: $ => seq(
-      '(',
-      commaSeparated($.identifier),
-      ')'
+      $.constant
     ),
 
     comment: $ => /#.*/,
@@ -79,6 +71,19 @@ module.exports = grammar({
       "uint",
       "float",
       "str"
+    ),
+
+    // Enforce higher sequence parsing precedence
+    function_definition: $ => prec(2, seq(
+      'fn',
+      alias($.identifier, $.function_name),
+      $.parameter_list
+    )),
+
+    parameter_list: $ => seq(
+      '(',
+      commaSeparated($.identifier),
+      ')'
     )
   }
 });
