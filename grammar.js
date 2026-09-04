@@ -10,7 +10,6 @@
 module.exports = grammar({
   name: "gscript",
 
-  // Tells Tree-sitter it's okay to figure out 'use' contextually
   conflicts: $ => [
     [$.keyword, $.import]
   ],
@@ -37,6 +36,7 @@ module.exports = grammar({
 
     comment: $ => /#.*/,
 
+    // FIX: Wrapped in token() to force a named node output in the syntax tree
     constant: $ => token(choice(
       'true',
       'false',
@@ -65,15 +65,15 @@ module.exports = grammar({
 
     escape: $ => /\\["\\ntr]/,
 
-    type: $ => choice(
+    // FIX: Wrapped in token() to force a named node output in the syntax tree
+    type: $ => token(choice(
       "bool",
       "int",
       "uint",
       "float",
       "str"
-    ),
+    )),
 
-    // Enforce higher sequence parsing precedence
     function_definition: $ => prec(2, seq(
       'fn',
       alias($.identifier, $.function_name),
