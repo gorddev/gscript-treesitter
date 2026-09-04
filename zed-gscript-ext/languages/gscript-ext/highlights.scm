@@ -6,7 +6,11 @@
   "for"
   "while"
   "return"
-  "fn"
+  "fn",
+  "int",
+  "uint",
+  "float",
+  "str"
 ] @keyword
 
 (import
