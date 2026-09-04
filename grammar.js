@@ -10,11 +10,8 @@
 module.exports = grammar({
   name: "gscript",
 
-  // FIX: Added conflicts for literals and types so they don't collide with generic identifiers
   conflicts: $ => [
-    [$.keyword, $.import],
-    [$.identifier, $.constant],
-    [$.identifier, $.type]
+    [$.keyword, $.import]
   ],
 
   rules: {
@@ -29,7 +26,21 @@ module.exports = grammar({
       $.import,
       $.escape,
       $.type,
-      $.constant
+      $.constant,
+      $.function_definition
+    ),
+
+    // FIX: Added prec(2) to resolve conflict with the standalone 'fn' keyword
+    function_definition: $ => prec(2, seq(
+      'fn',
+      alias($.identifier, $.function_name),
+      $.parameter_list
+    )),
+
+    parameter_list: $ => seq(
+      '(',
+      commaSeparated($.identifier),
+      ')'
     ),
 
     comment: $ => /#.*/,
@@ -60,7 +71,6 @@ module.exports = grammar({
 
     string: $ => /".*"/,
 
-    // FIX: Simplified escape sequence token matching standard backslash escapes
     escape: $ => /\\["\\ntr]/,
 
     type: $ => choice(
@@ -72,3 +82,7 @@ module.exports = grammar({
     )
   }
 });
+
+function commaSeparated(rule) {
+  return optional(seq(rule, repeat(seq(',', rule))));
+}
