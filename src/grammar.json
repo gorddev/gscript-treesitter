@@ -64,15 +64,6 @@
         }
       ]
     },
-    "directive": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "as"
-        }
-      ]
-    },
     "keyword": {
       "type": "CHOICE",
       "members": [

@@ -31,10 +31,6 @@ module.exports = grammar({
       alias(/[a-zA-Z_][a-zA-Z0-9_]*/, $.module_name)
     ),
 
-    directive: $ => choice(
-      'as'
-    ),
-
     keyword: $ => choice(
       'if',
       'elif',
