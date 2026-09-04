@@ -1,5 +1,10 @@
 [
   {
+    "type": "constant",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "escape",
     "named": true,
     "fields": {},
@@ -53,6 +58,10 @@
           "named": true
         },
         {
+          "type": "constant",
+          "named": true
+        },
+        {
           "type": "escape",
           "named": true
         },
@@ -75,12 +84,29 @@
         {
           "type": "string",
           "named": true
+        },
+        {
+          "type": "type",
+          "named": true
         }
       ]
     }
   },
   {
-    "type": "\"",
+    "type": "type",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "\".*",
+    "named": false
+  },
+  {
+    "type": ".*\"",
+    "named": false
+  },
+  {
+    "type": "bool",
     "named": false
   },
   {
@@ -93,6 +119,10 @@
   },
   {
     "type": "else",
+    "named": false
+  },
+  {
+    "type": "false",
     "named": false
   },
   {
@@ -120,6 +150,10 @@
     "named": true
   },
   {
+    "type": "null",
+    "named": false
+  },
+  {
     "type": "number",
     "named": true
   },
@@ -134,6 +168,10 @@
   {
     "type": "string",
     "named": true
+  },
+  {
+    "type": "true",
+    "named": false
   },
   {
     "type": "uint",

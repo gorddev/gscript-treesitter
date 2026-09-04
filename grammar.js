@@ -25,10 +25,22 @@ module.exports = grammar({
       $.number,
       $.string,
       $.import,
-      $.escape
+      $.escape,
+      $.type,
+      $.constant
     ),
 
     comment: $ => /#.*/,
+
+    constant: $ => choice(
+      'true',
+      'false',
+      'null'
+    ),
+
+    directive: $ => choice(
+      'as'
+    ),
 
     import: $ => seq(
       'use',
@@ -37,20 +49,29 @@ module.exports = grammar({
 
     keyword: $ => choice(
       'if', 'elif', 'else', 'for', 'while', 'return', 'fn',
-      'int', 'uint', 'float', 'str', 'use'
+      'use'
     ),
 
     identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
 
-    // FIX: Replaced the broken regex so single/double digit integers parse correctly
     number: $ => /\d+(\.\d+)?/,
 
     string: $ => /".*"/,
 
     escape: $ => seq(
-      '"',
+      '".*',
       alias(/\\./, $.escape),
-      '"'
+      '.*"'
+    ),
+
+    type: $ => choice(
+      "bool",
+      "int",
+      "uint",
+      "float",
+      "str"
     )
+
+
   }
 });

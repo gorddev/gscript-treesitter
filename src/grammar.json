@@ -39,12 +39,46 @@
         {
           "type": "SYMBOL",
           "name": "escape"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "constant"
         }
       ]
     },
     "comment": {
       "type": "PATTERN",
       "value": "#.*"
+    },
+    "constant": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "true"
+        },
+        {
+          "type": "STRING",
+          "value": "false"
+        },
+        {
+          "type": "STRING",
+          "value": "null"
+        }
+      ]
+    },
+    "directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "as"
+        }
+      ]
     },
     "import": {
       "type": "SEQ",
@@ -97,22 +131,6 @@
         },
         {
           "type": "STRING",
-          "value": "int"
-        },
-        {
-          "type": "STRING",
-          "value": "uint"
-        },
-        {
-          "type": "STRING",
-          "value": "float"
-        },
-        {
-          "type": "STRING",
-          "value": "str"
-        },
-        {
-          "type": "STRING",
           "value": "use"
         }
       ]
@@ -134,7 +152,7 @@
       "members": [
         {
           "type": "STRING",
-          "value": "\""
+          "value": "\".*"
         },
         {
           "type": "ALIAS",
@@ -147,7 +165,32 @@
         },
         {
           "type": "STRING",
-          "value": "\""
+          "value": ".*\""
+        }
+      ]
+    },
+    "type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "bool"
+        },
+        {
+          "type": "STRING",
+          "value": "int"
+        },
+        {
+          "type": "STRING",
+          "value": "uint"
+        },
+        {
+          "type": "STRING",
+          "value": "float"
+        },
+        {
+          "type": "STRING",
+          "value": "str"
         }
       ]
     }
