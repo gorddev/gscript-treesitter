@@ -37,15 +37,15 @@ module.exports = grammar({
     comment: $ => /#.*/,
 
     // FIX: Match constants structurally as distinct keyword symbols
-    constant: $ => choice(
+    constant: $ => token(choice(
       'true',
       'false',
       'null'
-    ),
+    )),
 
-    directive: $ => choice(
+    directive: $ => token(choice(
       'as'
-    ),
+    )),
 
     import: $ => seq(
       'use',
@@ -66,13 +66,13 @@ module.exports = grammar({
     escape: $ => /\\["\\ntr]/,
 
     // FIX: Match primitive types structurally as distinct keyword symbols
-    type: $ => choice(
+    type: $ => token(choice(
       "bool",
       "int",
       "uint",
       "float",
       "str"
-    ),
+    )),
 
     function_definition: $ => prec(2, seq(
       'fn',
