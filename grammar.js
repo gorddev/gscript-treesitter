@@ -10,10 +10,6 @@
 module.exports = grammar({
   name: "gscript",
 
-  conflicts: $ => [
-    [$.keyword, $.import]
-  ],
-
   rules: {
     source_file: $ => repeat($._definition),
 
@@ -36,26 +32,23 @@ module.exports = grammar({
 
     comment: $ => /#.*/,
 
-    // FIX: Match constants structurally as distinct keyword symbols
+    // Safely wrap choices in token() to force named nodes in the AST
     constant: $ => token(choice(
       'true',
       'false',
       'null'
     )),
 
-    directive: $ => token(choice(
-      'as'
-    )),
+    directive: $ => token('as'),
 
     import: $ => seq(
       'use',
       alias(/[a-zA-Z_][a-zA-Z0-9_]*/, $.module_name)
     ),
 
-    keyword: $ => choice(
-      'if', 'elif', 'else', 'for', 'while', 'return', 'fn',
-      'use'
-    ),
+    keyword: $ => token(choice(
+      'if', 'elif', 'else', 'for', 'while', 'return', 'fn', 'use'
+    )),
 
     identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
 
@@ -65,7 +58,7 @@ module.exports = grammar({
 
     escape: $ => /\\["\\ntr]/,
 
-    // FIX: Match primitive types structurally as distinct keyword symbols
+    // Safely wrap choices in token() to force named nodes in the AST
     type: $ => token(choice(
       "bool",
       "int",
@@ -78,6 +71,16 @@ module.exports = grammar({
       'fn',
       alias($.identifier, $.function_name),
       $.parameter_list
-    ))
+    )),
+
+    parameter_list: $ => seq(
+      '(',
+      commaSeparated($.identifier),
+      ')'
+    )
   }
 });
+
+function commaSeparated(rule) {
+  return optional(seq(rule, repeat(seq(',', rule))));
+}
