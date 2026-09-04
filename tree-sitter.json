@@ -1,0 +1,43 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "gscript",
+      "camelcase": "GScript",
+      "title": "Gordie's Scripting Language",
+      "scope": "source.gscript",
+      "file-types": [
+        "gat",
+        "gac"
+      ],
+      "injection-regex": "^gscript$",
+      "class-name": "TreeSitterGscript"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "A small low-overhead scripting language used in a custom game engine.",
+    "authors": [
+      {
+        "name": "Gordon Novak",
+        "email": "novak9@stolaf.edu",
+        "url": "gordienovak.com"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/gorddev/gscript-treesitter.git",
+      "funding": ""
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "java": false,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
