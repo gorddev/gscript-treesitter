@@ -10,9 +10,11 @@
 module.exports = grammar({
   name: "gscript",
 
-  // Tells Tree-sitter it's okay to figure out 'use' contextually
+  // FIX: Added conflicts for literals and types so they don't collide with generic identifiers
   conflicts: $ => [
-    [$.keyword, $.import]
+    [$.keyword, $.import],
+    [$.identifier, $.constant],
+    [$.identifier, $.type]
   ],
 
   rules: {
@@ -58,11 +60,8 @@ module.exports = grammar({
 
     string: $ => /".*"/,
 
-    escape: $ => seq(
-      '".*',
-      alias(/\\./, $.escape),
-      '.*"'
-    ),
+    // FIX: Simplified escape sequence token matching standard backslash escapes
+    escape: $ => /\\["\\ntr]/,
 
     type: $ => choice(
       "bool",
@@ -71,7 +70,5 @@ module.exports = grammar({
       "float",
       "str"
     )
-
-
   }
 });
