@@ -1,8 +1,8 @@
-use Oopsy
+use Oopsy as
 
-use
-x = 1234.45
-y = "number number"
+use new_namespace
+float x = 1234.45
+int y = "number number"
 z = "scripto"
 int x = 3;
 

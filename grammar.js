@@ -16,6 +16,7 @@ module.exports = grammar({
 
     _definition: $ => choice(
       $.comment,
+      $.directive,
       $.keyword,
       $.identifier,
       $.number,
@@ -29,6 +30,11 @@ module.exports = grammar({
     import: $ => seq(
       'use',
       alias(/[a-zA-Z_][a-zA-Z0-9_]*/, $.module_name)
+    ),
+
+    directive: $ => choice(
+      'use',
+      'as'
     ),
 
     keyword: $ => choice(
