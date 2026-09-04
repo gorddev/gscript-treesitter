@@ -1,4 +1,0 @@
-name = "Gscript"
-grammar = "gscript"
-path_suffixes = ["gat", "gac"]
-line_comments = ["# "]
