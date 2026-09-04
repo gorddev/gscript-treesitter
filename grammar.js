@@ -16,7 +16,6 @@ module.exports = grammar({
 
     _definition: $ => choice(
       $.comment,
-      $.directive,
       $.keyword,
       $.identifier,
       $.number,
@@ -33,7 +32,6 @@ module.exports = grammar({
     ),
 
     directive: $ => choice(
-      'use',
       'as'
     ),
 
