@@ -94,6 +94,22 @@
         {
           "type": "STRING",
           "value": "fn"
+        },
+        {
+          "type": "STRING",
+          "value": "int"
+        },
+        {
+          "type": "STRING",
+          "value": "uint"
+        },
+        {
+          "type": "STRING",
+          "value": "float"
+        },
+        {
+          "type": "STRING",
+          "value": "str"
         }
       ]
     },

@@ -32,7 +32,7 @@ module.exports = grammar({
     ),
 
     keyword: $ => choice(
-      'if', 'elif', 'else', 'for', 'while', 'return', 'fn'
+      'if', 'elif', 'else', 'for', 'while', 'return', 'fn', 'int', 'uint', 'float', 'str'
     ),
 
     identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
