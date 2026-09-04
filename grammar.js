@@ -78,16 +78,6 @@ module.exports = grammar({
       'fn',
       alias($.identifier, $.function_name),
       $.parameter_list
-    )),
-
-    parameter_list: $ => seq(
-      '(',
-      commaSeparated($.identifier),
-      ')'
-    )
+    ))
   }
 });
-
-function commaSeparated(rule) {
-  return optional(seq(rule, repeat(seq(',', rule))));
-}
