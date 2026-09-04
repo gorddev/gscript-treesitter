@@ -110,6 +110,10 @@
         {
           "type": "STRING",
           "value": "str"
+        },
+        {
+          "type": "STRING",
+          "value": "use"
         }
       ]
     },
@@ -119,7 +123,7 @@
     },
     "number": {
       "type": "PATTERN",
-      "value": "([0-9][0-9]*[0-9.][0-9]*)"
+      "value": "\\d+(\\.\\d+)?"
     },
     "string": {
       "type": "PATTERN",
@@ -154,7 +158,12 @@
       "value": "\\s"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "keyword",
+      "import"
+    ]
+  ],
   "precedences": [],
   "externals": [],
   "inline": [],

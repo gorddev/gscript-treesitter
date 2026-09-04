@@ -10,8 +10,12 @@
 module.exports = grammar({
   name: "gscript",
 
+  // Tells Tree-sitter it's okay to figure out 'use' contextually
+  conflicts: $ => [
+    [$.keyword, $.import]
+  ],
+
   rules: {
-    // TODO: add the actual grammar rules
     source_file: $ => repeat($._definition),
 
     _definition: $ => choice(
@@ -32,22 +36,14 @@ module.exports = grammar({
     ),
 
     keyword: $ => choice(
-      'if',
-      'elif',
-      'else',
-      'for',
-      'while',
-      'return',
-      'fn',
-      'int',
-      'uint',
-      'float',
-      'str'
+      'if', 'elif', 'else', 'for', 'while', 'return', 'fn',
+      'int', 'uint', 'float', 'str', 'use'
     ),
 
     identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
 
-    number: $ => /([0-9][0-9]*[0-9.][0-9]*)/,
+    // FIX: Replaced the broken regex so single/double digit integers parse correctly
+    number: $ => /\d+(\.\d+)?/,
 
     string: $ => /".*"/,
 
