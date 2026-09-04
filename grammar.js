@@ -32,23 +32,23 @@ module.exports = grammar({
 
     comment: $ => /#.*/,
 
-    // Safely wrap choices in token() to force named nodes in the AST
-    constant: $ => token(choice(
+    // Keep flat literal choices so Tree-sitter compiles without complex tokenizing bindings
+    constant: $ => choice(
       'true',
       'false',
       'null'
-    )),
+    ),
 
-    directive: $ => token('as'),
+    directive: $ => 'as',
 
     import: $ => seq(
       'use',
       alias(/[a-zA-Z_][a-zA-Z0-9_]*/, $.module_name)
     ),
 
-    keyword: $ => token(choice(
+    keyword: $ => choice(
       'if', 'elif', 'else', 'for', 'while', 'return', 'fn', 'use'
-    )),
+    ),
 
     identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
 
@@ -58,14 +58,13 @@ module.exports = grammar({
 
     escape: $ => /\\["\\ntr]/,
 
-    // Safely wrap choices in token() to force named nodes in the AST
-    type: $ => token(choice(
+    type: $ => choice(
       "bool",
       "int",
       "uint",
       "float",
       "str"
-    )),
+    ),
 
     function_definition: $ => prec(2, seq(
       'fn',
