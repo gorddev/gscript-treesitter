@@ -106,6 +106,10 @@
           "named": true
         },
         {
+          "type": "special_type",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -115,6 +119,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "special_type",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "string",
@@ -214,6 +223,10 @@
   },
   {
     "type": "return",
+    "named": false
+  },
+  {
+    "type": "str",
     "named": false
   },
   {

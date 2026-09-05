@@ -24,6 +24,7 @@ module.exports = grammar({
       $.keyword,
       $.constant,
       $.type,
+      $.special_type,
       $.number,
       $.string,
       $.identifier

@@ -47,6 +47,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "special_type"
+        },
+        {
+          "type": "SYMBOL",
           "name": "number"
         },
         {
