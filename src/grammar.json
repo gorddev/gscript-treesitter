@@ -85,6 +85,10 @@
         {
           "type": "STRING",
           "value": "return"
+        },
+        {
+          "type": "STRING",
+          "value": "as"
         }
       ]
     },

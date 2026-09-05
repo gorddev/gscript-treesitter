@@ -35,7 +35,8 @@ module.exports = grammar({
       'else',
       'for',
       'while',
-      'return'
+      'return',
+      'as'
     ),
 
     comment: $ => /#.*/,

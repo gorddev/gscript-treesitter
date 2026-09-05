@@ -1,10 +1,13 @@
-use Oopsy as
+use Oopsy as boopsy
 
 use new_namespace
 float x = 1234.45
 int y = "number number"
 z = "scripto"
-int x = 3;ef
-dswefwefefwdwd
+int x = 3;
+
+if (unhappy == true) {
+
+}
 
 use
