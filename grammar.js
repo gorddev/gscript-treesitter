@@ -51,8 +51,11 @@ module.exports = grammar({
       "bool",
       "int",
       "uint",
-      "float",
-      "str"
+      "float"
+    ),
+
+    special_type: $ => choice(
+      'str'
     ),
 
     import: $ => seq(

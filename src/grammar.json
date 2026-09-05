@@ -131,7 +131,12 @@
         {
           "type": "STRING",
           "value": "float"
-        },
+        }
+      ]
+    },
+    "special_type": {
+      "type": "CHOICE",
+      "members": [
         {
           "type": "STRING",
           "value": "str"

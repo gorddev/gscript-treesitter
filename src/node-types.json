@@ -217,10 +217,6 @@
     "named": false
   },
   {
-    "type": "str",
-    "named": false
-  },
-  {
     "type": "true",
     "named": false
   },
