@@ -27,7 +27,8 @@ module.exports = grammar({
       $.special_type,
       $.number,
       $.string,
-      $.identifier
+      $.identifier,
+      $.operator
     ),
 
     keyword: $ => choice(
@@ -77,6 +78,17 @@ module.exports = grammar({
       "(",
       commaSeparated($.identifier),
       ")"
+    ),
+
+    operator: $ => choice(
+      '==',
+      '!=',
+      '=',
+      '+',
+      '-',
+      '/',
+      '*',
+      '!'
     ),
 
     number: $ => /\d+(\.\d+)?/,

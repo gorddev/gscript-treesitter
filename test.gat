@@ -16,6 +16,5 @@ int x = 3;
 
 uint z = 20;
 
-str fif
-
+str
 if (unhappy == false)
