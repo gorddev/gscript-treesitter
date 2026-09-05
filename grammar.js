@@ -21,11 +21,21 @@ module.exports = grammar({
     ),
 
     _expression: $ => choice(
+      $.keyword,
       $.constant,
       $.type,
       $.number,
       $.string,
       $.identifier
+    ),
+
+    keyword: $ => choice(
+      'if',
+      'elif',
+      'else',
+      'for',
+      'while',
+      'return'
     ),
 
     comment: $ => /#.*/,

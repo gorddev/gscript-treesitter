@@ -49,6 +49,11 @@
     }
   },
   {
+    "type": "keyword",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "parameter_list",
     "named": true,
     "fields": {},
@@ -90,6 +95,10 @@
         },
         {
           "type": "import",
+          "named": true
+        },
+        {
+          "type": "keyword",
           "named": true
         },
         {
@@ -152,6 +161,14 @@
     "named": true
   },
   {
+    "type": "elif",
+    "named": false
+  },
+  {
+    "type": "else",
+    "named": false
+  },
+  {
     "type": "escape",
     "named": true
   },
@@ -165,6 +182,14 @@
   },
   {
     "type": "fn",
+    "named": false
+  },
+  {
+    "type": "for",
+    "named": false
+  },
+  {
+    "type": "if",
     "named": false
   },
   {
@@ -184,6 +209,10 @@
     "named": true
   },
   {
+    "type": "return",
+    "named": false
+  },
+  {
     "type": "str",
     "named": false
   },
@@ -197,6 +226,10 @@
   },
   {
     "type": "use",
+    "named": false
+  },
+  {
+    "type": "while",
     "named": false
   }
 ]

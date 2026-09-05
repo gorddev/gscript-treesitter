@@ -1,0 +1,5 @@
+fn hello(a, b)
+if true
+  return
+if false
+  return
