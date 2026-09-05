@@ -1,33 +1,21 @@
 use Oopsy as boopsy
 
-fn message(int x, int y)
+fn message(x, y)
   if (x == y)
     print("x equals y!")
   else
     print("y equals x!")
-  endif
-end
+  end
+decl
 
 use new_namespace
 float x = 1234.45
-int y = "number number"
+int y = "number\n number\t\n\r\""
 z = "scripto"
 int x = 3;
 
 uint z = 20;
 
-str
+str fif
 
 if (unhappy == false)
-
-elif (unhappy == true)
-
-else
-
-endif
-
-while (unhappy == false)
-
-done
-
-use

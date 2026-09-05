@@ -93,6 +93,18 @@
         {
           "type": "STRING",
           "value": "as"
+        },
+        {
+          "type": "STRING",
+          "value": "decl"
+        },
+        {
+          "type": "STRING",
+          "value": "end"
+        },
+        {
+          "type": "STRING",
+          "value": "done"
         }
       ]
     },

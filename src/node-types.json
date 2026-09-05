@@ -174,11 +174,23 @@
     "named": true
   },
   {
+    "type": "decl",
+    "named": false
+  },
+  {
+    "type": "done",
+    "named": false
+  },
+  {
     "type": "elif",
     "named": false
   },
   {
     "type": "else",
+    "named": false
+  },
+  {
+    "type": "end",
     "named": false
   },
   {
