@@ -49,11 +49,6 @@
     }
   },
   {
-    "type": "keyword",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "parameter_list",
     "named": true,
     "fields": {},
@@ -86,10 +81,6 @@
           "named": true
         },
         {
-          "type": "escape",
-          "named": true
-        },
-        {
           "type": "function_definition",
           "named": true
         },
@@ -99,10 +90,6 @@
         },
         {
           "type": "import",
-          "named": true
-        },
-        {
-          "type": "keyword",
           "named": true
         },
         {
@@ -121,9 +108,28 @@
     }
   },
   {
+    "type": "string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "type",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "\"",
+    "named": false
   },
   {
     "type": "(",
@@ -146,14 +152,6 @@
     "named": true
   },
   {
-    "type": "elif",
-    "named": false
-  },
-  {
-    "type": "else",
-    "named": false
-  },
-  {
     "type": "escape",
     "named": true
   },
@@ -167,14 +165,6 @@
   },
   {
     "type": "fn",
-    "named": false
-  },
-  {
-    "type": "for",
-    "named": false
-  },
-  {
-    "type": "if",
     "named": false
   },
   {
@@ -194,16 +184,8 @@
     "named": true
   },
   {
-    "type": "return",
-    "named": false
-  },
-  {
     "type": "str",
     "named": false
-  },
-  {
-    "type": "string",
-    "named": true
   },
   {
     "type": "true",
@@ -215,10 +197,6 @@
   },
   {
     "type": "use",
-    "named": false
-  },
-  {
-    "type": "while",
     "named": false
   }
 ]

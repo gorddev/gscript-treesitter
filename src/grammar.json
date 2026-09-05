@@ -35,11 +35,11 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "keyword"
+          "name": "constant"
         },
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "type"
         },
         {
           "type": "SYMBOL",
@@ -51,15 +51,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "escape"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "type"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "constant"
+          "name": "identifier"
         }
       ]
     },
@@ -83,77 +75,6 @@
           "value": "null"
         }
       ]
-    },
-    "directive": {
-      "type": "STRING",
-      "value": "as"
-    },
-    "import": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "use"
-        },
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "PATTERN",
-            "value": "[a-zA-Z_][a-zA-Z0-9_]*"
-          },
-          "named": true,
-          "value": "module_name"
-        }
-      ]
-    },
-    "keyword": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "if"
-        },
-        {
-          "type": "STRING",
-          "value": "elif"
-        },
-        {
-          "type": "STRING",
-          "value": "else"
-        },
-        {
-          "type": "STRING",
-          "value": "for"
-        },
-        {
-          "type": "STRING",
-          "value": "while"
-        },
-        {
-          "type": "STRING",
-          "value": "return"
-        },
-        {
-          "type": "STRING",
-          "value": "fn"
-        }
-      ]
-    },
-    "identifier": {
-      "type": "PATTERN",
-      "value": "[a-zA-Z_][a-zA-Z0-9_]*"
-    },
-    "number": {
-      "type": "PATTERN",
-      "value": "\\d+(\\.\\d+)?"
-    },
-    "string": {
-      "type": "PATTERN",
-      "value": "\".*\""
-    },
-    "escape": {
-      "type": "PATTERN",
-      "value": "\\\\[\"\\\\ntr]"
     },
     "type": {
       "type": "CHOICE",
@@ -180,31 +101,45 @@
         }
       ]
     },
+    "import": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "use"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[a-zA-Z_][a-zA-Z0-9_]*"
+          },
+          "named": true,
+          "value": "module_name"
+        }
+      ]
+    },
     "function_definition": {
-      "type": "PREC",
-      "value": 2,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "fn"
-          },
-          {
-            "type": "ALIAS",
-            "content": {
-              "type": "SYMBOL",
-              "name": "identifier"
-            },
-            "named": true,
-            "value": "function_name"
-          },
-          {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "fn"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
             "type": "SYMBOL",
-            "name": "parameter_list"
-          }
-        ]
-      }
+            "name": "identifier"
+          },
+          "named": true,
+          "value": "function_name"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "parameter_list"
+        }
+      ]
     },
     "parameter_list": {
       "type": "SEQ",
@@ -251,6 +186,47 @@
           "value": ")"
         }
       ]
+    },
+    "number": {
+      "type": "PATTERN",
+      "value": "\\d+(\\.\\d+)?"
+    },
+    "string": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\""
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "escape"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^\"\\\\\\n]"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "\""
+        }
+      ]
+    },
+    "escape": {
+      "type": "PATTERN",
+      "value": "\\\\[\"\\\\ntr]"
+    },
+    "identifier": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z_][a-zA-Z0-9_]*"
     }
   },
   "extras": [
