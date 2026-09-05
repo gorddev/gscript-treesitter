@@ -21,42 +21,20 @@ module.exports = grammar({
     ),
 
     _expression: $ => choice(
-      $.keyword,
-      $.identifier,
+      $.constant,
+      $.type,
       $.number,
       $.string,
-      $.escape,
-      $.type,
-      $.constant
+      $.identifier
     ),
 
     comment: $ => /#.*/,
 
-    // Keep flat literal choices so Tree-sitter compiles without complex tokenizing bindings
     constant: $ => choice(
-      'true',
-      'false',
-      'null'
+      "true",
+      "false",
+      "null"
     ),
-
-    directive: $ => 'as',
-
-    import: $ => seq(
-      'use',
-      alias(/[a-zA-Z_][a-zA-Z0-9_]*/, $.module_name)
-    ),
-
-    keyword: $ => choice(
-      'if', 'elif', 'else', 'for', 'while', 'return', 'fn'
-    ),
-
-    identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
-
-    number: $ => /\d+(\.\d+)?/,
-
-    string: $ => /".*"/,
-
-    escape: $ => /\\["\\ntr]/,
 
     type: $ => choice(
       "bool",
@@ -66,20 +44,40 @@ module.exports = grammar({
       "str"
     ),
 
-    function_definition: $ => prec(2, seq(
-      'fn',
+    import: $ => seq(
+      "use",
+      alias(/[a-zA-Z_][a-zA-Z0-9_]*/, $.module_name)
+    ),
+
+    function_definition: $ => seq(
+      "fn",
       alias($.identifier, $.function_name),
       $.parameter_list
-    )),
+    ),
 
     parameter_list: $ => seq(
-      '(',
+      "(",
       commaSeparated($.identifier),
-      ')'
-    )
+      ")"
+    ),
+
+    number: $ => /\d+(\.\d+)?/,
+
+    string: $ => seq(
+      '"',
+      repeat(choice(
+        $.escape,
+        /[^"\\\n]/
+      )),
+      '"'
+    ),
+
+    escape: $ => /\\["\\ntr]/,
+
+    identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/
   }
 });
 
 function commaSeparated(rule) {
-  return optional(seq(rule, repeat(seq(',', rule))));
+  return optional(seq(rule, repeat(seq(",", rule))));
 }
