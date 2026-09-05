@@ -41,7 +41,8 @@ module.exports = grammar({
       'as',
       'decl',
       'end',
-      'done'
+      'done',
+      'in'
     ),
 
     comment: $ => /#.*/,

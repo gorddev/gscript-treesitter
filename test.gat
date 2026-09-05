@@ -14,7 +14,7 @@ int y = "number\n number\t\n\r\""
 z = "scripto"
 int x = 3;
 
-uint z = 20;
+uint z == 20;
 
 str
 if (unhappy == false)
